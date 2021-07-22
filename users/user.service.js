@@ -16,6 +16,8 @@ module.exports = {
 /** Login with username and password
  * @param {string} username - The username of system.
  * @param {string} password - The password of system.
+ * @param {string} firstName - The firstName of user.
+ * @param {string} lastName - The lastName of user.
  * @returns {{user: Object, token: string}} returns an object with user and user token.
  */
 async function authenticate({ username, password }) {

@@ -1,4 +1,5 @@
 {
     "connectionString": <"yourconnectionstring">,
+    "collectionName": "<collectionName>",
     "secret": "yoursecrectword"
 }

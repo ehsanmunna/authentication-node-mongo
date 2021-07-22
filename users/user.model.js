@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const config = require('config.json');
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
@@ -11,4 +12,5 @@ const schema = new Schema({
 
 schema.set('toJSON', { virtuals: true });
 
-module.exports = mongoose.model('User', schema);
+// module.exports = mongoose.model(config.appuser, schema);
+module.exports = mongoose.model("Appuser", schema);

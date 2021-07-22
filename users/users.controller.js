@@ -5,14 +5,91 @@ const userService = require('./user.service');
 // routes
 /**
  * @swagger
- * /authenticate:
- *  get:
+ * /api/users/authenticate:
+ *  post:
  *      summary: Retrieve a single user user.
  *      description: Retrieve a single user by username and password.
+ *      requestBody:
+ *          description: user input
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      properties:
+ *                          username:
+ *                              type: string
+ *                              description: add username.
+ *                              example: demo
+ *                          password:
+ *                              type: string
+ *                              description: add password.
+ *                              example: 123
  *      responses:
  *       200: 
+ *          description: get user and token.
+ *          content:
+ *           application/json:
+ *              schema:
+ *                  type: object
+ *                  properties:
+ *                      user:
+ *                       type: object
+ *                       description: user info in object.
+ *                      token:
+ *                       type: string
+ *                       description: get user token.
+ *                       example: ""
+ * 
  */
 router.post('/authenticate', authenticate);
+/**
+ * @swagger
+ * /api/users/register:
+ *  post:
+ *      summary: User registration.
+ *      description: User registration.
+ *      requestBody:
+ *          description: user input
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      type: object
+ *                      properties:
+ *                          username:
+ *                              type: string
+ *                              description: add username.
+ *                              example: demo
+ *                          password:
+ *                              type: string
+ *                              description: add password.
+ *                              example: 123
+ *                          firstName:
+ *                              type: string
+ *                              description: add password.
+ *                              example: hello
+ *                          lastName:
+ *                              type: string
+ *                              description: add password.
+ *                              example: world
+ *      responses:
+ *       200: 
+ *          description: get user and token.
+ *          content:
+ *           application/json:
+ *              schema:
+ *                  type: object
+ *                  properties:
+ *                      user:
+ *                       type: object
+ *                       description: user info in object.
+ *                      token:
+ *                       type: string
+ *                       description: get user token.
+ *                       example: ""
+ * 
+ */
 router.post('/register', register);
 router.get('/', getAll);
 router.get('/current', getCurrent);
