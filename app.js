@@ -11,12 +11,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 
-// use JWT auth to secure the api
-// app.use(jwt());
-
-// api routes
-app.use('/api/users', require('./users/users.controller'));
-
 const swaggerJsdoc = require('swagger-jsdoc');
 
 const options = {
@@ -34,11 +28,18 @@ const options = {
 const openapiSpecification = swaggerJsdoc(options);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 
+// use JWT auth to secure the api
+app.use(jwt());
+
+// api routes
+app.use('/api/users', require('./users/users.controller'));
+
 // global error handler
 app.use(errorHandler);
 
 // start server
 const port = process.env.PORT || 4000;
 const server = app.listen(port, function () {
-    console.log('Server listening on port ' + port);
+    console.log(`Server listening on port ${port}, \n path: http://localhost:${port}, \n api path: http://localhost:${port}/api/*`);
+    // console.log(`Url: http://localhost:${port}`);
 });

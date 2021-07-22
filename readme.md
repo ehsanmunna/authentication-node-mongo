@@ -1,13 +1,12 @@
 
 ### Project Setup:
-duplicate 'config.json.example' and renamed it to 'config.json'. In config.json file add your (mongo) db connection string to "connectionString" key.
+duplicate **config.json.example** and renamed it to **config.json**. Into the **config.json** file, add your (mongo) db connection string to "connectionString" key.
 
 npm i
 npm start
 
 ### Get API Doc:
-[after running server]
-http://localhost:4000/api-docs
+http://localhost:4000/api-docs *[after running server]*
 
 ### Get javascript docs:
 npm run doc
