@@ -1,0 +1,4 @@
+{
+    "connectionString": <"yourconnectionstring">,
+    "secret": "yoursecrectword"
+}
