@@ -51,20 +51,24 @@ async function getById(id) {
  * @returns {Promise|string} returns string error message if error occered and returns object if success.
  */
 async function create(userParam) {
-    // validate
-    if (await User.findOne({ username: userParam.username })) {
-        throw 'Username "' + userParam.username + '" is already taken';
+    try {
+        // validate
+        if (await User.findOne({ username: userParam.username })) {
+            throw 'Username "' + userParam.username + '" is already taken';
+        }
+
+        const user = new User(userParam);
+
+        // hash password
+        if (userParam.password) {
+            user.hash = bcrypt.hashSync(userParam.password, 10);
+        }
+
+        // save user
+        await user.save();
+    } catch (error) {
+        throw error;
     }
-
-    const user = new User(userParam);
-
-    // hash password
-    if (userParam.password) {
-        user.hash = bcrypt.hashSync(userParam.password, 10);
-    }
-
-    // save user
-    await user.save();
 }
 /** Update user with username and password
  * @param {Object} userParam - username and password object.

@@ -24,8 +24,9 @@ const options = {
     openapi: '3.0.0',
     info: {
       title: 'Authentication API',
+      description: "A simple authentication server with only a collection in mongodb base storage system. Superadmin can register appuser and get token with username and password",
       version: '1.0.0',
-    },
+    }
   },
   apis: ['./users/*.js'], // files containing annotations as above
 };

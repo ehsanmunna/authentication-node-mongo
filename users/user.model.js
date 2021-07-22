@@ -13,4 +13,8 @@ const schema = new Schema({
 schema.set('toJSON', { virtuals: true });
 
 // module.exports = mongoose.model(config.appuser, schema);
-module.exports = mongoose.model("Appuser", schema);
+/**
+ * User schema module
+ * @module Users
+ */
+module.exports = mongoose.model("Users", schema);
