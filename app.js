@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const jwt = require('_helpers/jwt');
 const errorHandler = require('_helpers/error-handler');
 const swaggerUi = require('swagger-ui-express');
+const morgan = require('morgan')
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -24,6 +25,9 @@ const options = {
   },
   apis: ['./users/*.js'], // files containing annotations as above
 };
+
+// for logging
+app.use(morgan('dev'))
 
 const openapiSpecification = swaggerJsdoc(options);
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
